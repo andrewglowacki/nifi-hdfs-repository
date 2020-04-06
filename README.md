@@ -1,4 +1,4 @@
-HDFS Content Repository Properties
+HDFS Content Repository
 ===================================
 
 This content repository uses the Hadoop FileSystem API to store FlowFile content. Because of this, it can be used to store content on the local disk and/or in one or more distinct HDFS clusters. It also has four different operating modes which are described below in the nifi.content.repository.hdfs.operating.mode property.
