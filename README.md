@@ -1,4 +1,5 @@
-# HDFS Content Repository Properties
+HDFS Content Repository Properties
+===================================
 
 This content repository uses the Hadoop FileSystem API to store FlowFile content. Because of this, it can be used to store content on the local disk and/or in one or more distinct HDFS clusters. It also has four different operating modes which are described below in the nifi.content.repository.hdfs.operating.mode property.
 
@@ -6,8 +7,10 @@ This content repository uses the Hadoop FileSystem API to store FlowFile content
 
 
 <br/>
----
-## Supported FileSystemRepository Properties:
+
+Supported FileSystemRepository Properties:
+----------------------------------------------
+
 All of the properties File System Content Repository Properties still apply (see the NiFi Administration Guide for details):
 
 - `nifi.content.repository.implementation`
@@ -28,8 +31,9 @@ An HDFS content repository directory would be specified with:
 
 
 <br/>
----
-## Example Minimal Configuration:
+
+Example Minimal Configuration:
+----------------------------------------------
 
     nifi.content.repository.implementation=org.apache.nifi.hdfs.repository.HdfsContentRepository
     nifi.content.repository.directory.default=file:content_repository
@@ -37,8 +41,9 @@ An HDFS content repository directory would be specified with:
 
 
 <br/>
----
-## HDFS Content Repository Specific Properties:
+
+HDFS Content Repository Specific Properties:
+--------------------------------------------------
 
 | Property | Description |
 |----------|-------------|
@@ -53,8 +58,9 @@ An HDFS content repository directory would be specified with:
 | nifi.content.repository.hdfs.sections.per.container | The number of subdirectories per location. This is primarily used to avoid too many content claim files within a single directory. <br/><br/>**Default:** `1024` |
 
 <br/>
----
-## Operating Modes
+
+Operating Modes
+----------------
 
 | Mode | Description |
 |------|-------------|
