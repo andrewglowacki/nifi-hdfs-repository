@@ -6,6 +6,11 @@ This content repository uses the Hadoop FileSystem API to store FlowFile content
 **NOTE:** This is an experimental content repository. Although it has been thoroughly unit tested, it has not be extensively tested with a representative test or production environment and should be used at your own risk.
 
 
+To Build:
+----------
+
+    mvn clean install
+
 <br/>
 
 Supported FileSystemRepository Properties:
