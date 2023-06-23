@@ -9,13 +9,13 @@ import org.apache.nifi.controller.repository.claim.ResourceClaim;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ArchiveOrDestroyDestructableClaims implements Runnable {
+public class ArchiveOrDestroyDestructibleClaims implements Runnable {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ArchiveOrDestroyDestructableClaims.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ArchiveOrDestroyDestructibleClaims.class);
     private final Collection<Container> containers;
-    private final ArchivableRepository repository;
+    private final AchievableRepository repository;
 
-    public ArchiveOrDestroyDestructableClaims(ArchivableRepository repository, Collection<Container> containers) {
+    public ArchiveOrDestroyDestructibleClaims(AchievableRepository repository, Collection<Container> containers) {
         this.containers = containers;
         this.repository = repository;
     }
@@ -72,7 +72,7 @@ public class ArchiveOrDestroyDestructableClaims implements Runnable {
                 }
             }
         } catch (final Throwable t) {
-            LOG.error("Failed to handle destructable claims due to {}", t.toString());
+            LOG.error("Failed to handle destructible claims due to {}", t.toString());
             if (LOG.isDebugEnabled()) {
                 LOG.error("", t);
             }

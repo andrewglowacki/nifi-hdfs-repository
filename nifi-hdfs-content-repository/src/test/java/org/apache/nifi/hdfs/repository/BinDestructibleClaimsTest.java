@@ -26,7 +26,7 @@ import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class BinDestructableClaimsTest {
+public class BinDestructibleClaimsTest {
 
     @BeforeClass
     public static void setUpSuite() {
@@ -76,7 +76,7 @@ public class BinDestructableClaimsTest {
 
         ContainerGroup group = new ContainerGroup(props, config(props), null, null);
 
-        BinDestructableClaims binner = new BinDestructableClaims(claimManager, group.getAll());
+        BinDestructibleClaims binner = new BinDestructibleClaims(claimManager, group.getAll());
 
         // make some fake claims and 'add' them to the claim manager
         for (int i = 0; i < 100; i++) {

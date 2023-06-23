@@ -8,7 +8,7 @@ public enum OperatingMode {
     /**
      * No special fallback handling is made during failure. Each configured
      * container is written to as normal until they are full, once all containers are
-     * full, writes will block until space becomes avaialble.
+     * full, writes will block until space becomes available.
      * Note: this is default operating mode if one isn't specified in the nifi.properties file.
      */
     Normal,
@@ -33,7 +33,7 @@ public enum OperatingMode {
      * The configured containers 'primary' group are filled as normal until they are full.
      * Once they are full, writes will block until space becomes available.
      *
-     * If a write failure ocurrs within all primary containers, the remaining non-primary
+     * If a write failure occurs within all primary containers, the remaining non-primary
      * containers written to until a configured time period has elapsed.
      *
      * Note: see the 'CapacityFallback' mode for details on how to specify the primary group.

@@ -68,7 +68,7 @@ public class ReArchiveClaims implements Runnable {
                             count++;
                         } catch (IOException ex) {
                             // we should set a failure condition here, but it's ambiguous which container is at fault
-                            LOG.warn("Failed to rearchive from " + copy + " to " + to, ex);
+                            LOG.warn("Failed to re-archive from " + copy + " to " + to, ex);
                         }
                     }
                 } catch (FileNotFoundException ex) { }
@@ -77,13 +77,13 @@ public class ReArchiveClaims implements Runnable {
             duration = System.currentTimeMillis() - duration;
 
             if (count == 0) {
-                LOG.debug("No ContentClaims rearchived for {}", archiveFrom);
+                LOG.debug("No ContentClaims re-archived for {}", archiveFrom);
             } else {
-                LOG.info("Successfully rearchived {} Resource Claims in {} ms for {}", count, duration, archiveFrom);
+                LOG.info("Successfully re-archived {} Resource Claims in {} ms for {}", count, duration, archiveFrom);
             }
 
         } catch (Throwable ex) {
-            LOG.error("Failed to rearchive claims", ex);
+            LOG.error("Failed to re-archive claims", ex);
         }
     }
 

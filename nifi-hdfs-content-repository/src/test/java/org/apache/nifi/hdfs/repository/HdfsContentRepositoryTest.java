@@ -99,7 +99,7 @@ public class HdfsContentRepositoryTest {
     }
 
     /**
-     * Deletes all files but keeps the driectory structure for the specified repository
+     * Deletes all files but keeps the directory structure for the specified repository
      */
     protected static void cleanRepo(File repo) {
         if (!repo.isDirectory()) {

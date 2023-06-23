@@ -422,7 +422,7 @@ public class ContainerHealthMonitorTest {
         private long useLastFailureTime = 0;
 
         public TimeAdjustingFailureContainer(Container delegate) throws IOException {
-            super("test-adjust", new Path("file:/this/path/doesnt/exist"), null, 0, 0, true);
+            super("test-adjust", new Path("file:/this/path/does/not/exist"), null, 0, 0, true);
             this.delegate = delegate;
         }
 

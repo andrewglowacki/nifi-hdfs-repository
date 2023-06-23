@@ -1,7 +1,7 @@
 package org.apache.nifi.hdfs.repository;
 
 /**
- * Thrown when all the containers in a group are inactive due to thier disk's
+ * Thrown when all the containers in a group are inactive due to their disk's
  * being full or failures
  */
 public class NoActiveContainersException extends InterruptedException {

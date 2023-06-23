@@ -17,14 +17,14 @@ import org.slf4j.LoggerFactory;
  *
  * Does this need to be a separate thread?
  */
-public class BinDestructableClaims implements Runnable {
+public class BinDestructibleClaims implements Runnable {
 
-    private static final Logger LOG = LoggerFactory.getLogger(BinDestructableClaims.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BinDestructibleClaims.class);
 
     private final ResourceClaimManager claimManager;
     private final Map<String, Container> containers;
 
-    public BinDestructableClaims(ResourceClaimManager claimManager, Map<String, Container> containers) {
+    public BinDestructibleClaims(ResourceClaimManager claimManager, Map<String, Container> containers) {
         this.claimManager = claimManager;
         this.containers = containers;
     }
@@ -32,7 +32,7 @@ public class BinDestructableClaims implements Runnable {
     @Override
     public void run() {
         try {
-            // Get all of the Destructable Claims and bin them based on their Container. We do this
+            // Get all of the Destructible Claims and bin them based on their Container. We do this
             // because the Container generally maps to a physical partition on the disk, so we want a few
             // different threads hitting the different partitions but don't want multiple threads hitting
             // the same partition.

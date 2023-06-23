@@ -1,6 +1,6 @@
 package org.apache.nifi.hdfs.repository;
 
-import static org.apache.nifi.hdfs.repository.BinDestructableClaimsTest.makeClaim;
+import static org.apache.nifi.hdfs.repository.BinDestructibleClaimsTest.makeClaim;
 import static org.apache.nifi.hdfs.repository.HdfsContentRepository.CORE_SITE_DEFAULT_PROPERTY;
 import static org.apache.nifi.hdfs.repository.PropertiesBuilder.config;
 import static org.apache.nifi.hdfs.repository.PropertiesBuilder.prop;
@@ -24,7 +24,7 @@ import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class ArchiveOrDestroyDestructableClaimsTest {
+public class ArchiveOrDestroyDestructibleClaimsTest {
 
     //
     // These tests are basically the same.
@@ -70,7 +70,7 @@ public class ArchiveOrDestroyDestructableClaimsTest {
         }
         assertEquals(100, allClaims.size());
 
-        ArchiveOrDestroyDestructableClaims claimHandler = new ArchiveOrDestroyDestructableClaims(repo, group.getAll().values());
+        ArchiveOrDestroyDestructibleClaims claimHandler = new ArchiveOrDestroyDestructibleClaims(repo, group.getAll().values());
 
         claimHandler.run();
 

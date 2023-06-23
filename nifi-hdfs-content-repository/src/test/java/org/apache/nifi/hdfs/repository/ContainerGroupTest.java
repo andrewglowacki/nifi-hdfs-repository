@@ -77,7 +77,7 @@ public class ContainerGroupTest {
 
         try {
             new ContainerGroup(props, config(props), null, null);
-            fail("Expected container group creation to fail becaues there are none defined");
+            fail("Expected container group creation to fail because there are none defined");
         } catch (RuntimeException ex) {
             assertTrue(ex.getMessage(), ex.getMessage().contains("No content repository containers/directories specified"));
         }

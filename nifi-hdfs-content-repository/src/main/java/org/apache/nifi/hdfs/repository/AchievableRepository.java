@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.nifi.controller.repository.ContentRepository;
 import org.apache.nifi.controller.repository.claim.ResourceClaim;
 
-public interface ArchivableRepository extends ContentRepository {
+public interface AchievableRepository extends ContentRepository {
 
     public boolean isArchiveEnabled();
 

@@ -224,7 +224,7 @@ public class ContainerGroup implements Iterable<Container> {
                             Path archiveDir = new Path(new Path(path, "" + i), HdfsContentRepository.ARCHIVE_DIR_NAME);
                             if (!fs.exists(archiveDir)) {
                                 if (!fs.mkdirs(archiveDir)) {
-                                    throw new RuntimeException("Could not create section archive direcotry: "
+                                    throw new RuntimeException("Could not create section archive directory: "
                                             + archiveDir + " for content repository container with name: " + name);
                                 }
                             }
@@ -240,9 +240,9 @@ public class ContainerGroup implements Iterable<Container> {
         } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         } catch (ExecutionException ex) {
-            throw new RuntimeException("Faild to create directory structure for " + name, ex);
+            throw new RuntimeException("Failed to create directory structure for " + name, ex);
         } catch (TimeoutException e) {
-            throw new RuntimeException("Failed to create directory strcuture in a reasonable time frame for: " + name);
+            throw new RuntimeException("Failed to create directory structure in a reasonable time frame for: " + name);
         } finally {
             executor.shutdownNow();
         }

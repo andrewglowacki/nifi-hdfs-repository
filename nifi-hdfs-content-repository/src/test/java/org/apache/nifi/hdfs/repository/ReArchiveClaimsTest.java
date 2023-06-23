@@ -103,7 +103,7 @@ public class ReArchiveClaimsTest {
 
         ReArchiveClaims rearchive = new ReArchiveClaims(primary.atModIndex(0), archive, 10);
 
-        // rearchiving should fail because we throw an exception when getFileSystem on the archive container
+        // re-archiving should fail because we throw an exception when getFileSystem on the archive container
         rearchive.run();
 
         File copied = new File("target/rearchive-test/archive/0/archive/claim-0");

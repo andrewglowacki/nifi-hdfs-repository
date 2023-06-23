@@ -92,7 +92,7 @@ import org.slf4j.LoggerFactory;
  * time to wait for an active container to be avaible before giving up and
  * throwing an exception. Defaults to indefinite.
  */
-public class HdfsContentRepository implements ClaimClosedHandler, ArchivableRepository, Closeable {
+public class HdfsContentRepository implements ClaimClosedHandler, AchievableRepository, Closeable {
 
     private static final Logger LOG = LoggerFactory.getLogger(HdfsContentRepository.class);
     protected static final int HEALTH_CHECK_RUN_INTERVAL_SECONDS = 15;
@@ -218,14 +218,14 @@ public class HdfsContentRepository implements ClaimClosedHandler, ArchivableRepo
             workContainers.putAll(secondary.getAll());
         }
 
-        workThreads.scheduleWithFixedDelay(new BinDestructableClaims(claimManager, workContainers), 1, 1,
+        workThreads.scheduleWithFixedDelay(new BinDestructibleClaims(claimManager, workContainers), 1, 1,
                 TimeUnit.SECONDS);
 
         workThreads.scheduleWithFixedDelay(new ContainerHealthMonitor(this, primary, secondary, repoConfig),
                 HEALTH_CHECK_RUN_INTERVAL_SECONDS, HEALTH_CHECK_RUN_INTERVAL_SECONDS, TimeUnit.SECONDS);
 
         for (int i = 0; i < workContainers.size(); i++) {
-            workThreads.scheduleWithFixedDelay(new ArchiveOrDestroyDestructableClaims(this, workContainers.values()), 1,
+            workThreads.scheduleWithFixedDelay(new ArchiveOrDestroyDestructibleClaims(this, workContainers.values()), 1,
                     1, TimeUnit.SECONDS);
         }
 

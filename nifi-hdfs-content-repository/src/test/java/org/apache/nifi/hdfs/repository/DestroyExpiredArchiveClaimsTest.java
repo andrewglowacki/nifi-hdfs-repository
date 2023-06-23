@@ -59,7 +59,7 @@ public class DestroyExpiredArchiveClaimsTest {
         HdfsContentRepository repo = mock(HdfsContentRepository.class);
         when(repo.getContainerUsableSpace(anyString())).thenReturn(base.getUsableSpace());
 
-        // current time without milli granularity
+        // current time without millisecond granularity
         long now = (System.currentTimeMillis() / 1000) * 1000;
 
         DestroyExpiredArchiveClaims destroy = new DestroyExpiredArchiveClaims(repo, group.iterator().next(), 30000);
@@ -92,7 +92,7 @@ public class DestroyExpiredArchiveClaimsTest {
 
         HdfsContentRepository repo = mock(HdfsContentRepository.class);
 
-        // current time without milli granularity
+        // current time without millisecond granularity
         long now = (System.currentTimeMillis() / 1000) * 1000;
 
         Container container = spy(group.iterator().next());
@@ -133,7 +133,7 @@ public class DestroyExpiredArchiveClaimsTest {
         HdfsContentRepository repo = mock(HdfsContentRepository.class);
         when(repo.getContainerUsableSpace(anyString())).thenReturn(base.getUsableSpace());
 
-        // current time without milli granularity
+        // current time without millisecond granularity
         long now = (System.currentTimeMillis() / 1000) * 1000;
 
         Container container = group.iterator().next();
@@ -188,7 +188,7 @@ public class DestroyExpiredArchiveClaimsTest {
         Container container = mock(Container.class);
         when(container.getName()).thenReturn("test");
 
-        // 1000 bytes need to be relcaimed
+        // 1000 bytes need to be re-claimed
         when(container.getMinUsableSpaceForArchive()).thenReturn(2000L);
         when(repo.getContainerUsableSpace(anyString())).thenReturn(1000L);
 
