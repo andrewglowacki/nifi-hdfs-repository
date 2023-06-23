@@ -16,7 +16,7 @@ public class NamedThreadFactory implements ThreadFactory {
     public Thread newThread(Runnable runnable) {
         Thread thread = new Thread(runnable);
         thread.setName(name + " #" + index.incrementAndGet());
-        thread.setDaemon(false);
+        thread.setDaemon(true);
         return thread;
     }
 

@@ -73,23 +73,23 @@ import org.slf4j.LoggerFactory;
  * nifi.content.repository.directory.location1=uri://path/to/dir1
  * nifi.content.repository.directory.location2=uri://path/to/dir2
  *
- * Then the following two properites can also be provided:
+ * Then the following two properties can also be provided:
  * nifi.content.repository.hdfs.core.site.location1=/path/to/core-site-1.xml
  * nifi.content.repository.hdfs.core.site.location2=/path/to/core-site-2.xml
  *
  * nifi.content.repository.hdfs.full.percentage - the percentage ('##%') of a
- * container's capcity that must be occupied before treating the container as
+ * container's capacity that must be occupied before treating the container as
  * 'full'. Note: once a container is full, all writes will stop for that
  * container. If all containers are full and there is no fallback, claim
  * creation will stop until space becomes available. Note: if a value isn't
  * specified explicitly, 95 is used.
  *
  * nifi.content.repository.hdfs.failure.timeout - the amount of time to wait
- * when a failure ocurrs for a container before attempting to use that container
+ * when a failure occurs for a container before attempting to use that container
  * again for writing.
  *
  * nifi.content.repository.hdfs.wait.active.containers.timeout - the amount of
- * time to wait for an active container to be avaible before giving up and
+ * time to wait for an active container to be available before giving up and
  * throwing an exception. Defaults to indefinite.
  */
 public class HdfsContentRepository implements ClaimClosedHandler, AchievableRepository, Closeable {
@@ -129,8 +129,6 @@ public class HdfsContentRepository implements ClaimClosedHandler, AchievableRepo
     }
 
     public HdfsContentRepository(NiFiProperties properties) {
-        // free executors created by FileSystemRepository
-
         this.repoConfig = new RepositoryConfig(properties);
         this.writableClaims = new LinkedBlockingQueue<>(repoConfig.getMaxFlowFilesPerClaim());
 
@@ -176,7 +174,7 @@ public class HdfsContentRepository implements ClaimClosedHandler, AchievableRepo
             numThreads -= archive.getNumContainers();
 
             // we need a re-archive thread for each primary/secondary container if
-            // rearchiving is enabled.
+            // re-archiving is enabled.
             numThreads += primary.getNumContainers();
             if (secondary != null) {
                 numThreads += secondary.getNumContainers();
@@ -304,7 +302,7 @@ public class HdfsContentRepository implements ClaimClosedHandler, AchievableRepo
     /**
      * Adapted from FileSystemRepository
      *
-     * Removed use of 'ContainerState' and backpressure due to the assumption that
+     * Removed use of 'ContainerState' and back pressure due to the assumption that
      * it's not possible to fill up HDFS faster than it would be to age archived
      * files off.
      */
@@ -327,15 +325,12 @@ public class HdfsContentRepository implements ClaimClosedHandler, AchievableRepo
             offset = 0L;
             LOG.debug("Creating new Resource Claim {}", claim);
 
-            // we always append because there may be another ContentClaim using the same
-            // resource claim.
-            // However, we know that we will never write to the same claim from two
-            // different threads
-            // at the same time because we will call create() to get the claim before we
-            // write to it,
-            // and when we call create(), it will remove it from the Queue, which means that
-            // no other
-            // thread will get the same Claim until we've finished writing to it.
+            // we always append because there may be another ContentClaim using 
+            // the same resource claim. However, we know that we will never write 
+            // to the same claim from two different threads at the same time because 
+            // we will call create() to get the claim before we write to it, and when 
+            // we call create(), it will remove it from the Queue, which means that no 
+            // other thread will get the same Claim until we've finished writing to it.
             Path file = container.createPath(claim);
             try {
                 ByteCountingOutputStream claimStream = new SynchronizedByteCountingOutputStream(
@@ -1104,7 +1099,7 @@ public class HdfsContentRepository implements ClaimClosedHandler, AchievableRepo
             writableClaims.remove(new ClaimAndLength(claim.getResourceClaim(), resourceClaimLength));
 
             claimStream.getOutStream().close();
-            LOG.debug("Claim lenth >= max; Closing {}", this);
+            LOG.debug("Claim length >= max; Closing {}", this);
             if (LOG.isTraceEnabled()) {
                 LOG.trace("Stack trace: ", new RuntimeException("Stack Trace for closing " + this));
             }
